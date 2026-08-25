@@ -1,0 +1,392 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background:
+  radial-gradient(circle at center, #2a2117 0%, #17130f 70%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* -----------------------
+          PAGE
+----------------------- */
+
+.game-page {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+
+  overflow: hidden;
+}
+
+/* -----------------------
+      GAME CONTAINER
+----------------------- */
+
+.game-container {
+  width: min(600px, 95vw);
+
+  background-color: #bd4f2d;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* -----------------------
+        START MESSAGE
+----------------------- */
+
+.start-message {
+  margin-top: -10px;
+  margin-bottom: 25px;
+
+  font-size: 16px;
+  color: white;
+}
+
+/* -----------------------
+        SCORE BAR
+----------------------- */
+
+.score-bar {
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 35px;
+
+  background-color: #6f541d;
+}
+
+.score,
+.high-score {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 32px;
+  color: white;
+}
+
+.apple-icon {
+  font-size: 42px;
+}
+
+.high-score span:first-child {
+  font-size: 38px;
+}
+
+/* -----------------------
+      BOARD AREA
+----------------------- */
+
+.board-area {
+  position: relative;
+}
+
+/* -----------------------
+      BOARD FRAME
+----------------------- */
+
+.board-wrapper {
+  padding: 30px;
+
+  background-color: #bd4f2d;
+}
+
+/* -----------------------
+        GAME BOARD
+----------------------- */
+
+.board {
+  display: grid;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  grid-template-columns:
+    repeat(var(--board-size), 1fr);
+
+  grid-template-rows:
+    repeat(var(--board-size), 1fr);
+
+  overflow: hidden;
+}
+
+/* -----------------------
+      BOARD CELLS
+----------------------- */
+
+.cell {
+  width: 100%;
+  height: 100%;
+}
+
+.light-cell {
+  background-color: #ffc451;
+}
+
+.dark-cell {
+  background-color: #ffb24c;
+}
+
+/* -----------------------
+          SNAKE
+----------------------- */
+
+.snake {
+  background-color: #4f7fe8 !important;
+  border-radius: 20%;
+}
+
+.snake-head {
+  background-color: #315fd1 !important;
+  border-radius: 35%;
+}
+
+/* -----------------------
+          FOOD
+----------------------- */
+
+.food {
+  background-color: #e82222 !important;
+
+  border-radius: 50%;
+
+  transform: scale(0.7);
+
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* -----------------------
+    GAME OVER OVERLAY
+----------------------- */
+
+.game-over-overlay {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(30, 20, 10, 0.55);
+
+  z-index: 10;
+}
+
+/* -----------------------
+    GAME OVER POPUP
+----------------------- */
+
+.game-over-box {
+  min-width: 260px;
+
+  padding: 35px 45px;
+
+  background-color: #6f541d;
+  color: white;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.game-over-box h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  font-size: 32px;
+}
+
+/* -----------------------
+      FINAL SCORE
+----------------------- */
+
+.final-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+
+  font-size: 42px;
+}
+
+.final-score-apple {
+  font-size: 48px;
+}
+
+/* -----------------------
+    PLAY AGAIN BUTTON
+----------------------- */
+
+.game-over-box button {
+  padding: 12px 24px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: green;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.game-over-box button:hover {
+  transform: scale(1.05);
+  background-color: darkgreen;
+}
+
+/* -----------------------
+      INSTRUCTIONS
+----------------------- */
+
+.instructions {
+  margin: 0;
+
+  padding: 12px;
+
+  text-align: center;
+
+  background-color: #bd4f2d;
+  color: white;
+
+  font-size: 15px;
+}
+
+/* -----------------------
+        SNAKE BODY
+----------------------- */
+
+.snake {
+  background-color: #4CAF50 !important;
+
+  border-radius: 8%;
+}
+
+/* -----------------------
+        SNAKE HEAD
+----------------------- */
+
+.snake-head {
+  background-color: #2E7D32 !important;
+
+  border-radius: 35%;
+
+  position: relative;
+}
+
+/* -----------------------
+      SNAKE EYES
+----------------------- */
+
+.snake-head::before,
+.snake-head::after {
+  content: "";
+
+  position: absolute;
+
+  width: 17%;
+  height: 17%;
+
+  background-color: white;
+
+  border: 2px solid #172039;
+
+  border-radius: 50%;
+
+  z-index: 2;
+}
+
+/* -----------------------
+      LOOKING RIGHT
+----------------------- */
+
+.snake-head.head-right::before {
+  top: 22%;
+  right: 18%;
+}
+
+.snake-head.head-right::after {
+  bottom: 22%;
+  right: 18%;
+}
+
+/* -----------------------
+      LOOKING LEFT
+----------------------- */
+
+.snake-head.head-left::before {
+  top: 22%;
+  left: 18%;
+}
+
+.snake-head.head-left::after {
+  bottom: 22%;
+  left: 18%;
+}
+
+/* -----------------------
+        LOOKING UP
+----------------------- */
+
+.snake-head.head-up::before {
+  top: 18%;
+  left: 22%;
+}
+
+.snake-head.head-up::after {
+  top: 18%;
+  right: 22%;
+}
+
+/* -----------------------
+      LOOKING DOWN
+----------------------- */
+
+.snake-head.head-down::before {
+  bottom: 18%;
+  left: 22%;
+}
+
+.snake-head.head-down::after {
+  bottom: 18%;
+  right: 22%;
+}
